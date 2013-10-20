@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:padding="5dip">
+
+    <TextView
+        android:id="@+id/tvTip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_tag"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_weight="0.5">
+
+        <TextView
+            android:id="@+id/tvTagInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+        
+        <Button
+            android:id="@+id/btnMfc"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_mfc" />
+        
+        <Button
+            android:id="@+id/btnEasyCard"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_easy_card" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_tag">請接觸一張卡片…</string>
+    <string name="app_name">Android Mifare Classic</string>
+    <string name="tag_info">卡片資訊</string>
+    <string name="rfid_tech">RFID類型</string>
+    <string name="tag_type">卡片類型</string>
+    <string name="tech_class">卡片類型的類別 (Android)</string>
+    <string name="btn_mfc">Mifare Classic操作</string>
+    <string name="btn_easy_card">悠遊卡操作</string>
+    <string name="wrong_type">我們不處理非Mifare Classic的卡片</string>
+    <string name="memory_size">記憶體大小</string>
+    <string name="connect_error">連線錯誤</string>
+    <string name="auth_error">認證錯誤</string>
+    <string name="read_file_error">讀取MFD檔案錯誤</string>
+    <string name="write_file_error">寫入MFD檔案錯誤</string>
+    <string name="memory">記憶體</string>
+    <string name="write">寫入</string>
+    <string name="value">數值</string>
+    <string name="permission">沒有寫入的權限</string>
+    <string name="format">格式化</string>
+    <string name="wrong_format">這個儲存格不是數值儲存格</string>
+    <string name="increment">加值</string>
+    <string name="decrement">減值</string>
+    <string name="i_value">立即值</string>
+    <string name="reset">清空</string>
+    <string name="reset_all">清空全部</string>
+    <string name="clear">重填</string>
+    <string name="ez_format">這張卡片不是悠遊卡格式</string>
+    <string name="money">餘額</string>
+    <string name="record">紀錄</string>
+    <string name="cost">花費</string>
+    <string name="last_inc">最近加值</string>
+    <string name="use">使用次數</string>
+    <string name="identify">身份</string>
+    <string name="expired">期限</string>
+    <string name="data">基本資料</string>
+    
+</resources>

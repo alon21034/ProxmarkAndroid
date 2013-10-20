@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_tag">Touch a tag for info…</string>
+    <string name="app_name">Android Mifare Classic</string>
+    <string name="tag_info">Tag Information</string>
+    <string name="rfid_tech">RFID Technology</string>
+    <string name="tag_type">Tag Type</string>
+    <string name="tech_class">Tag Technology Classes (Android)</string>
+    <string name="btn_mfc">Mifare Classic Operation</string>
+    <string name="btn_easy_card">Easy Card Operation</string>
+    <string name="wrong_type">We don\'t handle tags that are not Mifare Classic.</string>
+    <string name="memory_size">Memory Size</string>
+    <string name="connect_error">Connection Error</string>
+    <string name="auth_error">Authentication Error</string>
+    <string name="read_file_error">Reading MFD file Error</string>
+    <string name="write_file_error">Writing MFD file Error</string>
+    <string name="memory">Memory</string>
+    <string name="write">Write</string>
+    <string name="value">Value</string>
+    <string name="block">Block No.</string>
+    <string name="permission">No permission to write block</string>
+    <string name="format">Format</string>
+    <string name="wrong_format">This block is not a Value Block.</string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
+    <string name="i_value">Value</string>
+    <string name="reset">Reset</string>
+    <string name="reset_all">Reset All</string>
+    <string name="clear">Clear</string>
+    <string name="ez_format">The card is not EasyCard format.</string>
+    <string name="money">Money</string>
+    <string name="record">Record</string>
+    <string name="cost">Cost</string>
+    <string name="last_inc">Last time increment</string>
+    <string name="use">Use times</string>
+    <string name="identify">Identify</string>
+    <string name="expired">Expired date</string>
+    <string name="data">Data</string>
+    
+</resources>
