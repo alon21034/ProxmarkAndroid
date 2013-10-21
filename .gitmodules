@@ -1,3 +1,6 @@
 [submodule "proxmark3-epa-source"]
 	path = proxmark3-epa-source
 	url = git@github.com:lee790909/proxmark3-epa-source.git
+[submodule "proxdroid"]
+	path = proxdroid
+	url = https://github.com/marcv81/proxdroid.git
