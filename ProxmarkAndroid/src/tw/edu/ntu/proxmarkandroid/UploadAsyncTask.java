@@ -25,18 +25,18 @@ public class UploadAsyncTask extends AsyncTask<Void, Void, Void> {
 	private final static int SERVER_PORT = 11111;
 	private final static String SERVER_IP = "140.112.175.112";
 	
-	private ArrayList<String> session;
+	protected ArrayList<String> session;
 	
-	private String uuid;
-	private String nt;
-	private String nr;
-	private String ar;
-	private String at;
+	protected String uuid;
+	protected String nt;
+	protected String nr;
+	protected String ar;
+	protected String at;
 	
 	public UploadAsyncTask(String param) {
 		super.onPreExecute();
 		session = new ArrayList<String>();
-		//fetch(param);
+		fetch(param);
 		session.clear();
 		session.add(uuid);
 		session.add(nt);
@@ -45,21 +45,21 @@ public class UploadAsyncTask extends AsyncTask<Void, Void, Void> {
 		session.add(at);
 		
 		for (int i = 0 ; i < session.size() ; ++i) {
-			Log.d("!!", "res: " + session.get(i));
+			Log.d("!!", "!! res: " + session.get(i));
 		}
 	}
 	
 	@Override
     protected Void doInBackground(Void... params) {
-		Socket socket;
-		try {
-			InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
-			Log.d("TCP", "C: Connecting...");
-
-			try {
-				socket = new Socket(serverAddr, 11111);
-				
-				try {
+//		Socket socket;
+//		try {
+//			InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
+//			Log.d("TCP", "C: Connecting...");
+//
+//			try {
+//				socket = new Socket(serverAddr, 11111);
+//				
+//				try {
 //					for (int i = 0 ; i < session.size() ; ++i) {
 //						Log.d("TCP", "C: Sending: '" + session.get(i) + "'");
 //						PrintWriter out = new PrintWriter(new BufferedWriter(
@@ -67,25 +67,25 @@ public class UploadAsyncTask extends AsyncTask<Void, Void, Void> {
 //								true);
 //						out.println(session.get(i));
 //					}
-					
-					PrintWriter out = new PrintWriter(new BufferedWriter(
-							new OutputStreamWriter(socket.getOutputStream())),
-							true);
-					out.println("tttt");
-				} catch (Exception e) {
-					Log.e("TCP", "S: Error", e);
-				} finally {
-
-					socket.close();
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} catch (UnknownHostException e1) {
-			e1.printStackTrace();
-		}
+//					
+//					PrintWriter out = new PrintWriter(new BufferedWriter(
+//							new OutputStreamWriter(socket.getOutputStream())),
+//							true);
+//					out.println("tttt");
+//				} catch (Exception e) {
+//					Log.e("TCP", "S: Error", e);
+//				} finally {
+//
+//					socket.close();
+//				}
+//
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//
+//		} catch (UnknownHostException e1) {
+//			e1.printStackTrace();
+//		}
 		return null;
     }
 	

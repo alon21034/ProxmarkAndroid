@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.nfc.tech.MifareClassic;
 import android.os.Bundle;
@@ -70,6 +72,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		System.loadLibrary("hello-jni");
+		
 		// Create UI view and set listeners.
 		outTextView = (TextView) findViewById(R.id.outTextView);
 		errTextView = (TextView) findViewById(R.id.errTextView);
@@ -95,12 +99,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		connectButton = (Button) findViewById(R.id.connectButton);
 		connectButton.setOnClickListener(this);
 		
-		transButton = (Button) findViewById(R.id.transButton);
+		transButton = (Button) findViewById(R.id.testButton);
 		transButton.setOnClickListener(this);
 		
 		mIsRecord = false;
 		
-		try {
+		getSuperUser();
+	}
+
+	private void getSuperUser() {
+	    try {
 	        ps = Runtime.getRuntime().exec("su\n");
 	        OutputStream os = ps.getOutputStream();
 	        final InputStream is = ps.getInputStream();
@@ -157,7 +165,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	        // TODO Auto-generated catch block
 	        e.printStackTrace();
         }
-	}
+    }
 
 	@Override
 	protected void onPause() {
@@ -181,6 +189,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.menu_reset_item:
 			errTextView.setText("");
 			outTextView.setText("");
+			break;
+		case R.id.menu_su:
+			if (mThread1.isAlive()) mThread1 = null;
+			if (mThread2.isAlive()) mThread2 = null;
+			getSuperUser();
 			break;
 		default:
 			break;
@@ -243,34 +256,70 @@ public class MainActivity extends Activity implements OnClickListener {
             }
 			break;
 		case R.id.uploadButton:
-			if (mIsRecord) {
-				mIsRecord = false;
-				UploadAsyncTask mAsyncTask = new UploadAsyncTask(mTraceString) {        
-					@Override
-					protected void onPostExecute(Void result) {
-						mTraceString = "";
-						super.onPostExecute(result);
-					}
-				};
-				mAsyncTask.execute();
-			} else {
-				Toast.makeText(this, "snoop first", Toast.LENGTH_SHORT).show();
-			}
+//			if (mIsRecord) {
+//				mIsRecord = false;
+//				UploadAsyncTask mAsyncTask = new UploadAsyncTask(mTraceString) {        
+//					@Override
+//					protected void onPostExecute(Void result) {
+//						mTraceString = "";
+//						super.onPostExecute(result);
+//					}
+//				};
+//				mAsyncTask.execute();
+//			} else {
+//				Toast.makeText(this, "snoop first", Toast.LENGTH_SHORT).show();
+//			}
+			try {
+	            dos.writeBytes("hf mf mifare\n");
+            } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+            }
 			break;
 		case R.id.connectButton:
-			UploadAsyncTask mAsyncTask = new UploadAsyncTask("test") {        
+			UploadAsyncTask mAsyncTask = new UploadAsyncTask(mTraceString) {        
 				@Override
 				protected void onPostExecute(Void result) {
 					super.onPostExecute(result);
+					for (int i = 0 ; i < session.size() ; ++i) {
+						Log.d("!!", "!!! res: " + session.get(i));
+					}
+					
+					String str = Long.toHexString(stringFromJNI(
+							Long.parseLong(uuid, 16),
+							Long.parseLong(nt, 16),
+							Long.parseLong(nr, 16),
+							Long.parseLong(ar, 16),
+							Long.parseLong(at, 16)
+							));
+					Toast.makeText(getApplicationContext(), 
+							"uid = " + uuid + "\n" +
+							"nt  = " + nt + "\n" + 
+							"nr  = " + nr + "\n" + 
+							"ar  = " + ar + "\n" +
+							"at  = " + at + "\n" + 
+							str.length() + "   " + str, Toast.LENGTH_LONG).show();
+					
 				}
 			};
+			
 			mAsyncTask.execute();
 			break;
-		case R.id.transButton:
-			
+		case R.id.testButton:
+			String str = Long.toHexString(stringFromJNI(
+					Long.parseLong("eeeebbce", 16),
+					Long.parseLong("98d39113", 16),
+					Long.parseLong("7d214025", 16),
+					Long.parseLong("9d65d4b0", 16),
+					Long.parseLong("442f10d6", 16)
+					));
+			Toast.makeText(getApplicationContext(), str.length() + "   " + str, Toast.LENGTH_LONG).show();
 			break;
 		default:
 			break;
+			
 		}
     }
+	
+	public native long stringFromJNI(long a, long b, long c, long d, long e);
 }

@@ -69,7 +69,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="0.5"
-	        android:text="upload"
+	        android:text="Mifate Attack"
 	        />
     
     </LinearLayout>
@@ -78,14 +78,14 @@
         android:id="@+id/connectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connect NFC Tag"
+        android:text="Snoop Attack"
         />
     
     <Button 
-        android:id="@+id/transButton"
+        android:id="@+id/testButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transfer"
+        android:text="Test JNI Lib"
         />
     
     

@@ -11,4 +11,9 @@
         android:title="Reset"
         />
     
+    <item 
+        android:id="@+id/menu_su"
+        android:title="Super User"
+        />
+    
 </menu>
