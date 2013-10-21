@@ -1,0 +1,3 @@
+[submodule "proxmark3-epa-source"]
+	path = proxmark3-epa-source
+	url = git@github.com:lee790909/proxmark3-epa-source.git
